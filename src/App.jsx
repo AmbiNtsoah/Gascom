@@ -1,11 +1,8 @@
-import { useState } from "react";
 import Controller from "./assets/controller.png";
 import LandingPage from "./pages/LandingPage";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <LandingPage />
@@ -14,15 +11,10 @@ function App() {
           <img
             src={Controller}
             alt="PS5_Controller"
-            className=" hover:to-blue-500"
             width="100px"
+            className="hover:bg-red-800"
           />
         </a>
-      </div>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
       </div>
     </>
   );

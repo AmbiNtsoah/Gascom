@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 function LandingPage() {
   return (
     <>
-      <Navigation title='Gascom Navigation Bar here'/>
+      <Navigation />
       <p>Landing Page</p>
     </>
   );
