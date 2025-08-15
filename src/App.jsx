@@ -1,21 +1,18 @@
-import Controller from "./assets/controller.png";
-import LandingPage from "./pages/LandingPage";
+import NavBar from "./components/NavBar";
+import Carousel from "./components/Carousel";
+import Services from "./components/Services";
+import Team from "./components/Team";
+import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <LandingPage />
-      <div>
-        <a href="https://www.github.com/AmbiNtsoah" target="_blank">
-          <img
-            src={Controller}
-            alt="PS5_Controller"
-            width="100px"
-            className="hover:bg-red-800"
-          />
-        </a>
-      </div>
+      <NavBar />
+      <Services />
+      <Carousel />
+      <Team />
+      <Footer />
     </>
   );
 }
