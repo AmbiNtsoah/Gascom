@@ -1,50 +1,93 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import GeS_Icon from "../assets/GeS_Icon.png";
 
 export default function NavBar() {
-  return (
-    <>
-      <nav
-        className=" shadow-md p-4 flex justify-between items-center sticky top-0 z-50"
-        style={{ backgroundColor: "#242424" }}
-      >
-        {/* Logo */}
-        <div>
-          <a href="/" className="flex items-center space-x-2">
-            <img
-              src={GeS_Icon}
-              alt="GeS Icon"
-              width="50px"
-              className="rounded-full"
-            />
-            <span className="text-xl font-semibold text-white-800">GasCom</span>
-          </a>
-        </div>
+  const [menuOpen, setMenuOpen] = useState(false);
 
-        {/* Navigation Links */}
-        <ul className="hidden md:flex space-x-8 text-white-700 font-medium">
-          <li>
-            <a href="#" className="hover:text-red-600 cursor-pointer">
-              Home
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  const links = [
+    { name: "Home", href: "#" },
+    { name: "Services", href: "#services" },
+    { name: "Team", href: "#team" },
+    { name: "Contact", href: "#footer" },
+  ];
+
+  return (
+    <nav
+      className="shadow-md px-6 py-4 flex justify-between items-center sticky top-0 z-50 
+                 backdrop-blur-md bg-[#1A1A1A]/90 border-b border-red-700/30"
+    >
+      {/* Logo */}
+      <a href="/" className="flex items-center space-x-2">
+        <img
+          src={GeS_Icon}
+          alt="GeS Icon"
+          width="45"
+          className="rounded-full border-2 border-red-600 shadow-[0_0_12px_rgba(229,9,20,0.7)]"
+        />
+        <span className="text-2xl font-extrabold tracking-wide text-white drop-shadow-lg">
+          Gas<span className="text-[#E50914]">Com</span>
+        </span>
+      </a>
+
+      {/* Desktop Links */}
+      <ul className="hidden md:flex space-x-8 font-medium">
+        {links.map((link, i) => (
+          <li key={i}>
+            <a
+              href={link.href}
+              className="text-[#B3B3B3] hover:text-[#E50914] hover:drop-shadow-[0_0_6px_#E50914] transition duration-300"
+            >
+              {link.name}
             </a>
           </li>
-          <li>
-            <a href="#team" className="hover:text-red-600 cursor-pointer">
-              Team
-            </a>
-          </li>
-          <li>
-            <a href="#services" className="hover:text-red-600 cursor-pointer">
-              Services
-            </a>
-          </li>
-          <li>
-            <a href="#footer" className="hover:text-red-600 cursor-pointer">
-              Contact
-            </a>
-          </li>
+        ))}
+      </ul>
+
+      {/* Mobile Menu Button */}
+      <div
+        className="md:hidden text-2xl text-white cursor-pointer"
+        onClick={toggleMenu}
+      >
+        {menuOpen ? <FaTimes /> : <FaBars />}
+      </div>
+
+      {/* Mobile Drawer Menu */}
+      <div
+        className={`fixed top-0 right-0 h-full w-3/4 sm:w-1/2 bg-[#0d0d0d]/95 
+                    shadow-2xl backdrop-blur-xl transform transition-transform duration-500 
+                    ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
+        <div className="flex justify-end p-6">
+          <FaTimes
+            className="text-2xl text-white cursor-pointer"
+            onClick={toggleMenu}
+          />
+        </div>
+        <ul className="flex flex-col items-center gap-8 mt-12 text-lg font-semibold">
+          {links.map((link, i) => (
+            <li key={i}>
+              <a
+                href={link.href}
+                onClick={toggleMenu}
+                className="text-[#B3B3B3] hover:text-[#E50914] hover:drop-shadow-[0_0_10px_#E50914] transition duration-300"
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
         </ul>
-      </nav>
-    </>
+      </div>
+
+      {/* Overlay quand menu ouvert */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden"
+          onClick={toggleMenu}
+        ></div>
+      )}
+    </nav>
   );
 }
