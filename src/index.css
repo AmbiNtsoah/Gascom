@@ -8,7 +8,9 @@ body {
   overflow-x: hidden;
 }
 
-
+* {
+  cursor: url('cursors/Zanpaktou.cur'), auto;
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

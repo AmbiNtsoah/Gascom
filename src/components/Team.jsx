@@ -21,12 +21,14 @@ const team = [
 export default function Team() {
   return (
     <section id="team" className="bg-[#242424] text-white py-16">
-      <h2 className="text-3xl font-bold text-center mb-10">Nos Équipes</h2>
+      <h2 className="text-3xl font-bold text-center mb-10 text-[#E50914] drop-shadow-[0_0_15px_rgba(229,9,20,0.8)]">
+        Nos Équipes
+      </h2>
       <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         {team.map((member, i) => (
           <div
             key={i}
-            className="bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg hover:scale-105 transition transform"
+            className="bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg hover:scale-105 transition transform cursor-pointer border border-red-700/40 hover:border-red-500/60"
           >
             <img
               src={member.image}

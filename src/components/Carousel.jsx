@@ -56,6 +56,7 @@ export default function Carousel() {
 
   return (
     <section
+      id="jeux"
       className="relative bg-gradient-to-b from-[#0d0d0d] to-[#1a1a1a] py-16"
       onMouseEnter={() => swiperRef.current?.autoplay.stop()}
       onMouseLeave={() => swiperRef.current?.autoplay.start()}
@@ -71,7 +72,7 @@ export default function Carousel() {
         slidesPerView={1}
         breakpoints={{
           640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 }, // slides par taille d'écran 
+          1024: { slidesPerView: 3 }, // slides par taille d'écran
           1280: { slidesPerView: 4 },
         }}
         loop={true}
